@@ -110,8 +110,8 @@ for (n in names(training)) {
 tidyTrain&lt;-tidyTrain[,-c(1:7)]
 tidyTest&lt;-tidyTest[,-c(1:7)]</code></pre>
 </div>
-<div id="develop-training-and-test-sets" class="section level2">
-<h2>Develop training and test sets</h2>
+<div id="develop-training-and-test-sets-for-cross-validation" class="section level2">
+<h2>Develop training and test sets for cross validation</h2>
 <p>From the dataset available, create a training set using 75% of the data and a testing set using the remining 25%.</p>
 <pre class="r"><code>set.seed(12345)
 #partition data 75/25 to build the model

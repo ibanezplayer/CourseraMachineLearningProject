@@ -1,6 +1,6 @@
 ---
 title: "Quality of Activity"
-output: html_document
+output: pdf_document
 ---
 ```{r, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
 #setwd("C:\\Users\\Dad\\Documents\\R\\Coursera\\Machine Learning\\Week 3")
@@ -55,7 +55,7 @@ tidyTrain<-tidyTrain[,-c(1:7)]
 tidyTest<-tidyTest[,-c(1:7)]
 ```
 
-##Develop training and test sets
+##Develop training and test sets for cross validation
 From the dataset available, create a training set using 75% of the data and a testing set using the remining 25%.
 ```{r}
 set.seed(12345)

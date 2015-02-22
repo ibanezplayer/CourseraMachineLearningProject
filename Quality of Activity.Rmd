@@ -81,7 +81,15 @@ pLDA<-predict(fitLDA,newdata=testSet)
 \pagebreak
 
 ##Comparing the models
-In comparing the models through a confusion matrix, Random Forest produces 99.45% accuracy whereas LDA results in 69.8% accuracy.
+fitRF is expected to perform well, with an error rate of only .44%
+```{r}
+fitRF
+```
+fitLDA is expected to only have 70.1% accuracy
+```{r}
+fitLDA
+```
+In comparing the tested models through a confusion matrix, Random Forest produces 99.45% accuracy (slightly under the .44% error rate) whereas LDA results in 69.8% accuracy (slightly under the expected 70.1% error rate.
 ```{r}
 #Random Forest
 confusionMatrix(pRF,testSet$classe)$overall[1]
@@ -90,7 +98,6 @@ confusionMatrix(pLDA,testSet$classe)$overall[1]
 ```
 ##Choosing the best model
 Due to its higher accuracy in testing, the Random Forest model is selected to predict the outcome of the input values in scope for this project.
-
 ##Predicting the outcome
 With the correct model identified, the following predicts the classe values using the Random Forest model.
 ```{r}

@@ -137,7 +137,43 @@ fitLDA&lt;-train(classe~.,data=trainSet,method=&quot;lda&quot;)</code></pre>
 </div>
 <div id="comparing-the-models" class="section level2">
 <h2>Comparing the models</h2>
-<p>In comparing the models through a confusion matrix, Random Forest produces 99.45% accuracy whereas LDA results in 69.8% accuracy.</p>
+<p>fitRF is expected to perform well, with an error rate of only .44%</p>
+<pre class="r"><code>fitRF</code></pre>
+<pre><code>## 
+## Call:
+##  randomForest(formula = classe ~ ., data = trainSet, method = &quot;rf&quot;) 
+##                Type of random forest: classification
+##                      Number of trees: 500
+## No. of variables tried at each split: 7
+## 
+##         OOB estimate of  error rate: 0.4%
+## Confusion matrix:
+##      A    B    C    D    E  class.error
+## A 4184    1    0    0    0 0.0002389486
+## B    8 2838    2    0    0 0.0035112360
+## C    0   13 2553    1    0 0.0054538372
+## D    0    0   21 2388    3 0.0099502488
+## E    0    0    1    9 2696 0.0036954915</code></pre>
+<p>fitLDA is expected to only have 70.1% accuracy</p>
+<pre class="r"><code>fitLDA</code></pre>
+<pre><code>## Linear Discriminant Analysis 
+## 
+## 14718 samples
+##    52 predictor
+##     5 classes: 'A', 'B', 'C', 'D', 'E' 
+## 
+## No pre-processing
+## Resampling: Bootstrapped (25 reps) 
+## 
+## Summary of sample sizes: 14718, 14718, 14718, 14718, 14718, 14718, ... 
+## 
+## Resampling results
+## 
+##   Accuracy  Kappa      Accuracy SD  Kappa SD   
+##   0.70188   0.6227271  0.006453442  0.008052584
+## 
+## </code></pre>
+<p>In comparing the tested models through a confusion matrix, Random Forest produces 99.45% accuracy (slightly under the .44% error rate) whereas LDA results in 69.8% accuracy (slightly under the expected 70.1% error rate).</p>
 <pre class="r"><code>#Random Forest
 confusionMatrix(pRF,testSet$classe)$overall[1]</code></pre>
 <pre><code>##  Accuracy 
@@ -149,11 +185,7 @@ confusionMatrix(pLDA,testSet$classe)$overall[1]</code></pre>
 </div>
 <div id="choosing-the-best-model" class="section level2">
 <h2>Choosing the best model</h2>
-<p>Due to its higher accuracy in testing, the Random Forest model is selected to predict the outcome of the input values in scope for this project.</p>
-</div>
-<div id="predicting-the-outcome" class="section level2">
-<h2>Predicting the outcome</h2>
-<p>With the correct model identified, the following predicts the classe values using the Random Forest model.</p>
+<p>Due to its higher accuracy in testing, the Random Forest model is selected to predict the outcome of the input values in scope for this project. ##Predicting the outcome With the correct model identified, the following predicts the classe values using the Random Forest model.</p>
 <pre class="r"><code>p&lt;-predict(fitRF,newdata=tidyTest)</code></pre>
 <p></p>
 </div>
